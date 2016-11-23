@@ -1,4 +1,4 @@
-// Type definitions for react-native 0.34
+// Type definitions for react-native 0.37
 // Project: https://github.com/facebook/react-native
 // Definitions by: Bruno Grieder <https://github.com/bgrieder>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -1828,6 +1828,16 @@ declare namespace  __React {
         [key: string]: any
     }
 
+    /**
+     * Passed data from WebView via window.postMessage
+     */
+    export interface WebViewMessageEventData {
+	/**
+	 * The data sent from a WebView; can only be a string.
+	 */
+	data?: string
+    }
+    
     export interface WebViewPropertiesAndroid {
 
         /**
@@ -1970,6 +1980,11 @@ declare namespace  __React {
          * Invoked when load fails
          */
         onError?:  ( event: NavState ) => void
+
+        /**
+         * Invoked when window.postMessage is called from WebView.
+         */
+	onMessage?: ( event: NativeSyntheticEvent<WebViewMessageEventData> ) => void
 
         /**
          * Invoked when load finish
